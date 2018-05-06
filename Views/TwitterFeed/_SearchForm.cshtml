@@ -1,0 +1,21 @@
+﻿@model SearchModel
+
+@{
+    string hashTag = string.Empty;
+    string searchTerm = string.Empty;
+
+    if(Model != null)
+    {
+        hashTag = Model.HashTag;
+        searchTerm = Model.SearchTerm;
+    }
+}
+
+<form asp-controller="TwitterFeed" asp-action="Feed" method="get">
+    <p>
+        Hash Tag: <input type="text" name="hashTag" value="@hashTag" required>
+        FIlter by Text: <input type="text" name="searchTerm" value="@searchTerm">
+        <input type="submit" value="Filter" />
+        <input type="hidden" name="filtering" value="true" />
+    </p>
+</form>
